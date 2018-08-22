@@ -1,6 +1,6 @@
 #include <stdio.h>
-void sum(int begin, int end)
-{
+void sum(int begin, int end)  // void无返回return  要想有返回  定义出变量型  如：  
+{                                            //int（double） sum(int begin, int end)
     int i;
     int sum = 0;
     for (i = begin; i <= end; i++)
