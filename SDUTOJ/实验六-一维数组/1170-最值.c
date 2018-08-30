@@ -32,7 +32,7 @@ int main()
     t = a[smin];
     a[smin] = a[0];
     a[0] = t;
-    
+
     for (i = 0; i < n; i++)
     {
         if (i == 0)
