@@ -6,9 +6,9 @@ int main()
     gets(xx);
     gets(jj);
     if (strcmp(xx, jj) == 0)   //strcmp函数   srcmp(a,b);
-        printf("Equal\n");          //a>b return 1;
+        printf("Equal\n");          //a>b return 正值;
     else                            //a=b return 0;
-    {                               //a<b return -1;
+    {                               //a<b return 负值;
         if (strcmp(xx, "Rock") == 0)
         {
             if (strcmp(jj, "Scissors") == 0)
