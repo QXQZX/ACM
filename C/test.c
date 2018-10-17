@@ -1,46 +1,40 @@
 #include <stdio.h>
-#include <math.h>
 int main()
 {
-    int a, b, i, t;
-    while (scanf("%d", &a) != EOF)
+
+    int arr[5] = {10, 20, 30, 40, 50};
+    int i = 0;
+    printf("数据:\n\n");
+    printf("十进制表示的数据：\n");
+    for (i = 0; i < 5; i++)
     {
-        int flag = 1, sign = 1, s = 0;
-        for (i = 2; i < sqrt(a); i++)
-        {
-            if (a % i == 0 && a != 2)
-            {
-                flag = 0;
-            }
-        }
-        if (flag)
-        {
-            while (a != 0)
-            {
-                b = a % 10;
-                a /= 10;
-                s = s + b;
-            }
-
-            for (t = 2; t < s; t++)
-            {
-                if (s % t == 0)
-                    break;
-            }
-            if (s == t)
-            {
-                printf("YES\n");
-            }
-            else
-            {
-                printf("NO\n");
-            }
-        }
-        else
-        {
-            printf("NO\n");
-        }
+        printf("%d\t", arr[i]);
     }
-
-    return 0;
+    printf("\n\n指针形式十六进制表示的数据：\n");
+    for (i = 0; i < 5; i++)
+    {
+        printf("%p\t", arr[i]);
+    }
+    printf("\n\n普通十六进制表示的数据：\n");
+    for (i = 0; i < 5; i++)
+    {
+        printf("%x\t", arr[i]);
+    }
+    printf("\n\n\n地址:\n");
+    printf("\n\n十进制表示的地址：\n");
+    for (i = 0; i < 5; i++)
+    {
+        printf("%d\t", &arr[i]);
+    }
+    printf("\n\n指针形式十六进制表示的地址：\n");
+    for (i = 0; i < 5; i++)
+    {
+        printf("%p\t", &arr[i]);
+    }
+    printf("\n\n普通十六进制表示的地址：\n");
+    for (i = 0; i < 5; i++)
+    {
+        printf("%x\t", &arr[i]);
+    }
+    printf("\n");
 }
