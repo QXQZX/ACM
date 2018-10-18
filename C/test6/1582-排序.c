@@ -8,7 +8,7 @@ int main()
     {
         scanf("%d", &num[i]);
     }
-    for (i = 0; i < n - 1; i++)
+    for (i = 0; i < n - 1; i++)//选择排序
     {
         for (m = i + 1; m < n; m++)
         {
