@@ -1,0 +1,34 @@
+header {
+  /* text-align: center; */
+  margin: 50px auto;
+  /* border: 1px solid black; */
+  font-size: 22px;
+  max-width: 900px;
+}
+
+.main {
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #f7f7f9;
+}
+
+.main-h {
+  overflow: hidden;
+}
+
+#left {
+  font-size: 20px;
+  float: left;
+}
+
+#right {
+  font-size: 20px;
+  float: right;
+}
+
+#timer {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+}

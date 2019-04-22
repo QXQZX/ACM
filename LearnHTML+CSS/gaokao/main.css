@@ -1,0 +1,36 @@
+body {
+  background-color: #272727;
+  color: white;
+}
+
+.main {
+  height: 435px;
+  width: 100%;
+}
+
+#timer {
+  height: 120px;
+  text-align: center;
+  margin: 200px auto;
+  font-size: 70px;
+}
+
+#comeon {
+  margin: 0 auto;
+  height: 335px;
+  width: 100%;
+  text-align: center;
+  font-size: 70px;
+}
+
+footer {
+  height: 40px;
+  /* border: 1px solid black; */
+  text-align: center;
+  line-height: 40px;
+}
+
+footer a {
+  text-decoration: none;
+  color: grey;
+}

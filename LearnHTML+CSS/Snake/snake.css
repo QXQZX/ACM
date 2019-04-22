@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.startPage {
+    /* display: none; */
+    width: 100%;
+    z-index: 999;
+    height: 1000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.startBtn {
+    background-image: url('Snakeimg/startGame.png');
+    height: 170px;
+    width: 200px;
+    background-size: 100% 100%;  /*调的是图片*/
+    cursor: pointer;
+    position: absolute;
+    /*下面实现居中*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.wrapper {
+    width: 100%;  /*铺满屏幕*/
+    height: 1000px;
+    background-image: url('Snakeimg/bg.jpg');
+    background-size: 100% 100%;
+    position: relative;  /*使warpper的子集都相对wrapper定位*/
+}
+
+.wrapper .left-side {
+    width: 30%;
+    position: absolute;
+    height: 1000px;
+    /* border: 1px solid black; */
+}
+.wrapper .left-side .description {
+    position: absolute;
+    top: 330px;
+    left: 10px;
+    height: 120px;
+    width: 330px;
+    text-align: center;
+    /* border: 1px solid red; */
+    font-size: 1.2em;
+}
+/*
+.wrapper .left-side img {
+    /* display: none; 
+}
+*/
+
+.wrapper .main {
+    position: absolute;
+    /* 选出主游戏区 */
+    left: 25%;
+    width: 50%;
+    height: 90%;
+    /* border: 1px solid black; */
+}
+
+
+.wrapper .main .header {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+.wrapper .main .header .score {
+    line-height: 80px;
+    color: #ddd;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.wrapper .main .content {
+    position: absolute;
+    width: 79.5%;
+    height: 36.5%;
+    left: 10%;
+    top: 34%;
+    /* border: 1px solid red; */
+
+}
+
+.loser {
+    display: none;
+    position: 100%;
+    height: 1000px;
+    top: 0;
+    height: 0;
+}
+.loser .con {
+    background-image: url('Snakeimg/startP.jpg');
+    background-size: 100% 100%;
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    /* 实现居中 */
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* 圆角 */
+    border-radius: 20px;
+}
+
+.loser .con .loserScore {
+    display: block;
+    height: 30px;
+    width: 40px;
+    position: absolute;
+    top: 42%;
+    left: 40%;
+    color: #222;
+    font-weight: bolder;
+}
+.loser .con .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    background-image: url('Snakeimg/closeBtn.png');
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.food {
+    background-image: url('Snakeimg/apple.png');
+    background-size: 100% 100%;
+}
+
+.head {
+    background-image: url('Snakeimg/head.png');
+    background-size: 100% 100%;
+}
+.body {
+    background-image: url('Snakeimg/body.png');
+    background-size: 100% 100%;
+}

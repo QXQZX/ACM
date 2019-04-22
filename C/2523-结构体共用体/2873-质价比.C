@@ -10,30 +10,25 @@ int main()
     int n, i, j;
     while (~scanf("%d", &n))
     {
-        for (i = 0; i < n; i++)//输入质量
+        for (i = 0; i < n; i++) //输入质量
         {
             scanf("%d", &wipi[i].wi);
         }
-        for (i = 0; i < n; i++)//输入价格
+        for (i = 0; i < n; i++) //输入价格
         {
             scanf("%d", &wipi[i].pi);
         }
-        for (i = 0; i < n - 1; i++)//选择排序
-        {
-            for (j = i + 1; j < n; j++)
-            {
-                if (wipi[i].wi > wipi[j].wi)
-                {
-                    temp = wipi[i];
-                    wipi[i] = wipi[j];
-                    wipi[j] = temp;
-                }
-            }
-        }
-        for (i = 0; i < n - 1; i++)//冒泡排序
+
+        for (i = 0; i < n - 1; i++) //冒泡排序
         {
             for (j = 0; j < n - i - 1; j++)
             {
+                if (wipi[j].wi > wipi[j + 1].wi)
+                {
+                    temp = wipi[j + 1];
+                    wipi[j + 1] = wipi[j];
+                    wipi[j] = temp;
+                }
                 if (wipi[j + 1].wi == wipi[j].wi && wipi[j + 1].pi > wipi[j].pi)
                 {
                     int temp = wipi[j + 1].pi;
