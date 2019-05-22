@@ -1,12 +1,15 @@
-#include "stdc++.h"
+#include <bits/stdc++.h>
 #define INF INT_MAX
+#define Max 500005
 using namespace std;
-struct node {
+struct edge {
     int v, w;
     int next;
-} edge[4000010];
+} edge[Max];
 
-int dis[500050], vis[500050], head[500050];
+int head[Max];
+int dis[Max];
+int cat[Max];
 int n, m, cnt;
 
 void add(int u, int v, int w) {
@@ -16,26 +19,25 @@ void add(int u, int v, int w) {
     head[u] = cnt++;
 }
 
-void SPFA(int s, int e) {
-    memset(vis, 0, sizeof(vis));
+void spfa(int s, int e) {
     queue<int> q;
 
     for (int i = 0; i <= n; i++) dis[i] = INF;
-
     dis[s] = 0;
-    vis[s] = 1;
+    cat[s] = 1;
     q.push(s);
 
     while (!q.empty()) {
-        int u = q.front();
+        int t = q.front();
         q.pop();
-        vis[u] = 0;
-        for (int i = head[u]; i != -1; i = edge[i].next) {
+        cat[t] = 0;
+
+        for (int i = head[t]; i != -1; i = edge[i].next) {
             int v = edge[i].v;
-            if (dis[v] > dis[u] + edge[i].w) {
-                dis[v] = dis[u] + edge[i].w;
-                if (!vis[v]) {
-                    vis[v] = 1;
+            if (dis[v] > dis[t] + edge[i].w) {
+                dis[v] = dis[t] + edge[i].w;
+                if (!cat[v]) {
+                    cat[v] = 1;
                     q.push(v);
                 }
             }
@@ -43,20 +45,20 @@ void SPFA(int s, int e) {
     }
 }
 int main() {
-    int u, v, w, s, e;
-    while (~scanf("%d %d", &n, &m)) {
+    int u, v, w;
+    int s, e;
+    while (cin >> n >> m) {
+        memset(cat, 0, sizeof(cat));
         memset(head, -1, sizeof(head));
         cnt = 0;
         while (m--) {
-            scanf("%d %d %d", &u, &v, &w);
+            cin >> u >> v >> w;
             add(u, v, w);
             add(v, u, w);
         }
-
-        scanf("%d %d", &s, &e);
-        SPFA(s, e);
-        printf("%d\n", dis[e]);
+        cin >> s >> e;
+        spfa(s, e);
+        cout << dis[e] << endl;
     }
-
     return 0;
 }
