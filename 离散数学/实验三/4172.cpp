@@ -1,47 +1,43 @@
-#include <bits/stdc++.h>
-#define ll long long
-int arr[110];
-int vis[110];
-int num[110];
-int b[110];
+/**
+ * 题目中已说s是有限群 所有不必管s的数据只要判定s1是否构成群即可
+ */
+#include <c++/4.2.1/bits/stdc++.h>
+using namespace std;
+int arr[111];  // 存放群s的数据
+int brr[111];  // 存放群s1数据
+int num[111];  // 存放群s1内元素的逆元（不存在逆元 就不能构成群）
 int main() {
     int n, m, q;
-    while (~scanf("%d %d %d", &n, &m, &q)) {
-        int flag = 1;
-        memset(b, 0, sizeof(b));
-        memset(vis, 0, sizeof(vis));
+    while (cin >> n >> m >> q) {
+        int flag = 0;
         memset(num, -1, sizeof(num));
-        memset(arr, -1, sizeof(arr));
+
         for (int i = 1; i <= n; i++) {
-            scanf("%d", &arr[i]);
+            cin >> arr[i];
         }
         for (int i = 1; i <= q; i++) {
-            scanf("%d", &b[i]);
-            vis[b[i]] = 1;
+            cin >> brr[i];
+            if (brr[i] == 0) flag = 1;  // 要想s1是群   0必须存在
         }
-        if (vis[0] == 0) {
-            flag = 0;
-        }
-        num[0] = 0;
+
+        num[0] = 0;  // 0的逆元是0
         for (int i = 1; i <= n; i++) {
-            for (int j = i + 1; j <= n; j++) {
-                if (vis[(b[i] + b[j]) % m] && (b[i] + b[j]) % m == 0) {
-                    num[b[i]] = b[j];
-                    num[b[j]] = b[i];
+            for (int j = 1; j <= n; j++) {
+                // 在群中找每个元素的逆元  即 元素i 和 元素j 都在群中 且
+                // i+j%m==0
+                if (flag && (brr[i] + brr[j]) % m == 0) {
+                    num[brr[i]] = brr[j];
+                    num[brr[j]] = brr[i];
                     break;
                 }
             }
         }
         for (int i = 1; i <= n; i++) {
-            if (num[b[i]] == -1) {
+            if (num[brr[i]] == -1) {  // 要想成群  每个元素都有逆元
                 flag = 0;
             }
         }
-        if (!flag) {
-            printf("NO\n");
-        } else {
-            printf("YES\n");
-        }
+        printf(flag == 0 ? "NO\n" : "YES\n");
     }
     return 0;
 }

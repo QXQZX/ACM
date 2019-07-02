@@ -24,8 +24,7 @@ int main() {
             for (int j = 1; j <= n; j++)
                 printf(j == n ? "%d\n" : "%d ", a[i][j]);
         }
-        cout << ans_max << ' ';
-        cout << ans_min << endl;
+        cout << ans_max << ' ' << ans_min << endl;
     }
 
     return 0;
