@@ -1,23 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct node
-{
+struct node {
     int data;
     struct node *next;
 };
-int main()
-{
+int main() {
     struct node *head, *p, *q, *tail;
     head = (struct node *)malloc(sizeof(struct node));
     q = (struct node *)malloc(sizeof(struct node));
     head->next = NULL;
     tail = head;
-    while (1)
-    {
+    while (1) {
         p = (struct node *)malloc(sizeof(struct node));
         scanf("%d", &p->data);
-        if (p->data == -1)
-            break;
+        if (p->data == -1) break;
         p->next = NULL;
         tail->next = p;
         tail = p;
@@ -26,18 +22,15 @@ int main()
     p = head->next;
     head->next = NULL;
     q = p->next;
-    while (p != NULL)
-    {
+    while (p != NULL) {
         p->next = head->next;
         head->next = p;
         p = q;
-        if (q != NULL)
-            q = q->next;
+        if (q != NULL) q = q->next;
     }
     //输出转置完成的链表
     p = head->next;
-    while (p != NULL)
-    {
+    while (p != NULL) {
         if (p->next == NULL)
             printf("%d\n", p->data);
         else
