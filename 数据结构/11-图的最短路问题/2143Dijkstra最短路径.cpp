@@ -5,46 +5,38 @@ using namespace std;
 int n, m;
 int gra[111][111], cat[111], dist[111];
 
-void Dijkstra(int k)
-{
-    for (int i = 1; i <= n; i++) // dist数组初始化
+void Dijkstra(int k) {
+    for (int i = 1; i <= n; i++)  // dist数组初始化
         dist[i] = gra[k][i];
 
-    dist[k] = 0; // 初始化起点
+    dist[k] = 0;  // 初始化起点
     cat[k] = 1;
 
-    for (int q = 1; q <= n; q++)
-    {
+    for (int q = 1; q <= n; q++) {
         int min = INF;
-        int index = k; // 记录下一个确定点的序号
-        for (int j = 1; j <= n; j++)
-        {
-            if (!cat[j] && dist[j] < min)
-            {
+        int index = k;  // 记录下一个确定点的序号
+        for (int j = 1; j <= n; j++) {
+            if (!cat[j] && dist[j] < min) {
                 min = dist[j];
                 index = j;
             }
         }
         cat[index] = 1;
-        if (index == n) // 剪枝
+        if (index == n)  // 剪枝
             break;
 
-        for (int i = 1; i <= n; i++)
-        {
-            if (!cat[i] && gra[index][i] < INF && dist[i] > dist[index] + gra[index][i])
+        for (int i = 1; i <= n; i++) {
+            if (!cat[i] && gra[index][i] < INF &&
+                dist[i] > dist[index] + gra[index][i])
                 dist[i] = dist[index] + gra[index][i];
         }
     }
 }
-int main()
-{
-    while (cin >> n >> m)
-    {
+int main() {
+    while (cin >> n >> m) {
         memset(cat, 0, sizeof(cat));
-        for (int i = 1; i <= n; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (i == j)
                     gra[i][j] = 0;
                 else
@@ -52,16 +44,14 @@ int main()
             }
         }
         int a, b, c;
-        for (int i = 0; i < m; i++)
-        {
+        for (int i = 0; i < m; i++) {
             cin >> a >> b >> c;
-            if (gra[a][b] > c) // 覆盖最短路 少了 a不了
+            if (gra[a][b] > c)  // 覆盖最短路 少了 a不了
                 gra[a][b] = gra[b][a] = c;
         }
         if (m == 0)
             cout << "0" << endl;
-        else
-        {
+        else {
             Dijkstra(1);
             cout << dist[n] << endl;
         }
